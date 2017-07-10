@@ -1,4 +1,4 @@
-#Vivace Isomorphic PHP/JS Rendering Engine - 0.0.2 (alpha)
+# Vivace Isomorphic PHP/JS Rendering Engine - 0.0.2 (alpha)
 Updated 10 July 2017
 
 This project was created to disprove the idea that PHP and JavaScript can't be used together to build a single page web app that will still work without JavaScript. It is also designed to increase performance by removing the need for content to render before being loaded. It works by taking advantage two things both JavaScript and PHP understand - HTML and JSON.
