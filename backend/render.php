@@ -2,19 +2,19 @@
 
 function render($pages) {
   $GLOBALS['html'] = '';
-  $GLOBALS['json'] = '';
+  $json = '';
 
   foreach ($pages as $page) {
-
     if (file_exists('assets/models/'.$page.'.js')) {
-      $path = 'assets/models/'.$page.'.js';
-      $json = file_get_contents($path);
-      echo '<script>var app = '.$json.'</script>';
+      $json = file_get_contents('assets/models/'.$page.'.js');
     }
-
     $GLOBALS['html'] .= file_get_contents('assets/'.$page);
   }
 
+  // If no json file created, used default (index)
+  $json = '' ? $json = file_get_contents('assets/models/index.js') : $json = $json;
+
+  // Decode JSON to get page variables
   $variables = json_decode($json, TRUE);
 
   // if :startic var exist then replace content in {} with variable value
@@ -30,6 +30,8 @@ function render($pages) {
   },$response);
 
   echo $response;
+
+  echo '<script>var app = '.$json.'</script>';
 }
 
 
